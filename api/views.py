@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from .models import School, AssessmentAreas, Awards, Class, Student, Subject, Answers, Summary
+from .models import School, AssessmentAreas, Awards, Class, Student, Subject, Answers, Summary,CorrectAnswers
 
 # views.py
 def index(request):
@@ -13,6 +13,7 @@ def index(request):
     subjects = Subject.objects.all()
     answers = Answers.objects.all()
     summaries = Summary.objects.all()
+    correct_answers = CorrectAnswers.objects.all()
 
     # Create a Paginator object for each model
     schools_paginator = Paginator(schools, 10)  # Show 10 schools per page
@@ -23,6 +24,7 @@ def index(request):
     subjects_paginator = Paginator(subjects, 10)  # Show 10 subjects per page
     answers_paginator = Paginator(answers, 10)  # Show 10 answers per page
     summaries_paginator = Paginator(summaries, 10)  # Show 10 summaries per page
+    correct_answers_paginator = Paginator(correct_answers, 10)  # Show 10 correct answers per page
 
     # Get the page number from the query string for each paginator
     schools_page_number = request.GET.get('schools_page')
@@ -33,6 +35,7 @@ def index(request):
     subjects_page_number = request.GET.get('subjects_page')
     answers_page_number = request.GET.get('answers_page')
     summaries_page_number = request.GET.get('summaries_page')
+    correct_answers_page_number = request.GET.get('correct_answers_page')
 
     # Get the Page object for this page for each paginator
     schools_page = schools_paginator.get_page(schools_page_number)
@@ -43,7 +46,7 @@ def index(request):
     subjects_page = subjects_paginator.get_page(subjects_page_number)
     answers_page = answers_paginator.get_page(answers_page_number)
     summaries_page = summaries_paginator.get_page(summaries_page_number)
-
+    correct_answers_page = correct_answers_paginator.get_page(correct_answers_page_number)
     context = {
         'schools': schools_page,
         'assessment_areas': assessment_areas_page,
@@ -53,6 +56,7 @@ def index(request):
         'subjects': subjects_page,
         'answers': answers_page,
         'summaries': summaries_page,
+        'correct_answers': correct_answers_page,
     }
 
     return render(request, 'index.html', context)

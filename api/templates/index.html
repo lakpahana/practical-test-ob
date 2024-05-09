@@ -3,27 +3,7 @@
   <head>
     <title>My Django App</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-      h1 {
-        color: #333;
-        border-bottom: 1px solid #ddd;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
+
     </style>
 
     {% comment %} bootstrap {% endcomment %}
@@ -37,7 +17,7 @@
       <div class="row">
         <div class="col-4">
           <h1>Schools</h1>
-          <table>
+          <table class="table table-bordered">
             <tr>
               <th>Name</th>
             </tr>
@@ -67,7 +47,7 @@
         </div>
         <div class="col-4">
           <h1>Assessment Areas</h1>
-          <table>
+          <table class="table table-bordered">
             <tr>
               <th>Name</th>
             </tr>
@@ -107,7 +87,7 @@
         </div>
         <div class="col-4">
           <h1>Awards</h1>
-          <table>
+          <table class="table table-bordered">
             <tr>
               <th>Name</th>
             </tr>
@@ -139,153 +119,14 @@
         </div>
       </div>
 
+
+
    
-      <div class="row">
-        <div class="col-4">
-          <h1>Classes</h1>
-          <table>
-            <tr>
-              <th>Name</th>
-            </tr>
-            {% for class in classes %}
-            <tr>
-              <td>{{ class.class_name }}</td>
-            </tr>
-            {% endfor %}
-          </table>
-      
-          <!-- Pagination for Classes -->
-          <div class="pagination">
-            <span class="step-links">
-              {% if classes.has_previous %}
-              <a href="?classes_page=1">« first</a>
-              <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
-              {% endif %}
-      
-              <span class="current">
-                Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
-              </span>
-      
-              {% if classes.has_next %}
-              <a href="?classes_page={{ classes.next_page_number }}">next</a>
-              <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
-              {% endif %}
-            </span>
-          </div>
-         <div>
-         </div>
-          <div class="col-4">
-            <h1>Students</h1>
-            <table>
-              <tr>
-                <th>Name</th>
-              </tr>
-              {% for student in students %}
-              <tr>
-                <td>{{ student.fullname }}</td>
-              </tr>
-              {% endfor %}
-            </table>
-        
-            <!-- Pagination for Students -->
-            <div class="pagination">
-              <span class="step-links">
-                {% if students.has_previous %}
-                <a href="?students_page=1">« first</a>
-                <a href="?students_page={{ students.previous_page_number }}"
-                  >previous</a
-                >
-                {% endif %}
-        
-                <span class="current">
-                  Page {{ students.number }} of {{ students.paginator.num_pages }}.
-                </span>
-        
-                {% if students.has_next %}
-                <a href="?students_page={{ students.next_page_number }}">next</a>
-                <a href="?students_page={{ students.paginator.num_pages }}">last »</a>
-                {% endif %}
-              </span>
-            </div>
-            <div>
-              <div class="col-4">
-                <h1>Subjects</h1>
-                <table>
-                  <tr>
-                    <th>Subject</th>
-                    <th>Score</th>
-                  </tr>
-                  {% for subject in subjects %}
-                  <tr>
-                    <td>{{ subject.subject }}</td>
-                    <td>{{ subject.score }}</td>
-                  </tr>
-                  {% endfor %}
-                </table>
-            
-                <!-- Pagination for Subjects -->
-                <div class="pagination">
-                  <span class="step-links">
-                    {% if subjects.has_previous %}
-                    <a href="?subjects_page=1">« first</a>
-                    <a href="?subjects_page={{ subjects.previous_page_number }}"
-                      >previous</a
-                    >
-                    {% endif %}
-            
-                    <span class="current">
-                      Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
-                    </span>
-            
-                    {% if subjects.has_next %}
-                    <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
-                    <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
-                    {% endif %}
-                  </span>
-                </div>
-                <div>
-                
-        </div>
-
-
-
- 
-
-
-
-    <h1>Answers</h1>
-    <table>
-      <tr>
-        <th>Answer</th>
-      </tr>
-      {% for answer in answers %}
-      <tr>
-        <td>{{ answer.answers }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-    <!-- Pagination for Answers -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if answers.has_previous %}
-        <a href="?answers_page=1">« first</a>
-        <a href="?answers_page={{ answers.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-          Page {{ answers.number }} of {{ answers.paginator.num_pages }}.
-        </span>
-
-        {% if answers.has_next %}
-        <a href="?answers_page={{ answers.next_page_number }}">next</a>
-        <a href="?answers_page={{ answers.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
+    
+    <div class="row">
 
     <h1>Summaries</h1>
-    <table>
+    <table class="table table-bordered">
       <tr>
         <th>School</th>
         <th>Sydney Participant</th>
@@ -346,6 +187,7 @@
         {% endif %}
       </span>
     </div>
+  </div>
   </div>
   </body>
 </html>

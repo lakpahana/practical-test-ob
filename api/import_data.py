@@ -103,7 +103,7 @@ def import_data():
                         class_id=class_instance,
                         correct_answer_percentage_per_class=row["correct_answer_percentage_per_class"],
                         answer=answers_instance,
-                        correct_answer=correct_answer_instance,
+                        correct_answer=correct_answer_instance.correct_answer,
                         student=student,
                         student_score=row["student_score"],
                         subject=subject_instance,
