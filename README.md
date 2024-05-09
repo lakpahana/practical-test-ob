@@ -30,6 +30,11 @@ To start the project, follow the instructions below:
    copy to api/dataset folder
    ```
 
+6. **Import data from CSV:**
+   ```bash
+   python manage.py import_data_command
+   ```
+
 5. **Build Docker Image:**
    ```bash
    docker build -t practicaltest .

@@ -10,6 +10,8 @@ COPY . .
 
 RUN python manage.py migrate
 
+RUN python manage.py import_data_command
+
 RUN python manage.py collectstatic --no-input
 
 EXPOSE 8000
