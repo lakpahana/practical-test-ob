@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Django App</title>
-    <style>
-
-    </style>
-
-    {% comment %} bootstrap {% endcomment %}
+    <title>School Data</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -14,9 +9,52 @@
   </head>
   <body>
     <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">School Data</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Schools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Assessment Areas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Awards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Classes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Subjects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Summaries</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       <div class="row">
-        <div class="col-4">
-          <h1>Schools</h1>
+        <div class= "col-4">
+          <h2>Schools</h2>
           <table class="table table-bordered">
             <tr>
               <th>Name</th>
@@ -46,7 +84,7 @@
           </div>
         </div>
         <div class="col-4">
-          <h1>Assessment Areas</h1>
+          <h2>Assessment Areas</h2>
           <table class="table table-bordered">
             <tr>
               <th>Name</th>
@@ -86,7 +124,7 @@
           </div>
         </div>
         <div class="col-4">
-          <h1>Awards</h1>
+          <h2>Awards</h2>
           <table class="table table-bordered">
             <tr>
               <th>Name</th>
@@ -119,53 +157,155 @@
         </div>
       </div>
 
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-4">
+          <h2>Classes</h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Name</th>
+            </tr>
+            <!-- Classes Table Content -->
+            {% for class in classes %}
+            <tr>
+              <td>{{ class.class_name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <!-- Pagination for Classes -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if classes.has_previous %}
+              <a href="?classes_page=1">« first</a>
+              <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
+              </span>
+              {% if classes.has_next %}
+              <a href="?classes_page={{ classes.next_page_number }}">next</a>
+              <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+  
+        <!-- Second Column -->
+        <div class="col-md-4">
+          <h2>Students</h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Name</th>
+            </tr>
+            <!-- Students Table Content -->
+            {% for student in students %}
+            <tr>
+              <td>{{ student.fullname }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <!-- Pagination for Students -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if students.has_previous %}
+              <a href="?students_page=1">« first</a>
+              <a href="?students_page={{ students.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                Page {{ students.number }} of {{ students.paginator.num_pages }}.
+              </span>
+              {% if students.has_next %}
+              <a href="?students_page={{ students.next_page_number }}">next</a>
+              <a href="?students_page={{ students.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+  
+        <!-- Third Column -->
+        <div class="col-md-4">
+          <h2>Subjects</h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Subject</th>
+              <th>Score</th>
+            </tr>
+            <!-- Subjects Table Content -->
+            {% for subject in subjects %}
+            <tr>
+              <td>{{ subject.subject }}</td>
+              <td>{{ subject.score }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <!-- Pagination for Subjects -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if subjects.has_previous %}
+              <a href="?subjects_page=1">« first</a>
+              <a href="?subjects_page={{ subjects.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
+              </span>
+              {% if subjects.has_next %}
+              <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
+              <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      </div> 
+
 
 
    
     
     <div class="row">
 
-    <h1>Summaries</h1>
-    <table class="table table-bordered">
-      <tr>
-        <th>School</th>
-        <th>Sydney Participant</th>
-        <th>Sydney Percentile</th>
-        <th>Assessment Area</th>
-        <th>Award</th>
-        <th>Class</th>
-        <th>Correct Answer Percentage Per Class</th>
-        <th>Correct Answer</th>
-        <th>Student</th>
-        <th>Participant</th>
-        <th>Student Score</th>
-        <th>Subject</th>
-        <th>Category Id</th>
-        <th>Year Level Name</th>
-        <th>Answer</th>
-        <th>Correct Answer Id</th>
-      </tr>
-      {% for summary in summaries %}
-      <tr>
-        <td>{{ summary.school.name }}</td>
-        <td>{{ summary.sydney_participant }}</td>
-        <td>{{ summary.sydney_percentile }}</td>
-        <td>{{ summary.assessment_area.name }}</td>
-        <td>{{ summary.award.name }}</td>
-        <td>{{ summary.class_id.class_name }}</td>
-        <td>{{ summary.correct_answer_percentage_per_class }}</td>
-        <td>{{ summary.correct_answer }}</td>
-        <td>{{ summary.student.fullname }}</td>
-        <td>{{ summary.participant }}</td>
-        <td>{{ summary.student_score }}</td>
-        <td>{{ summary.subject.subject }} - {{ summary.subject.score }}</td>
-        <td>{{ summary.category_id }}</td>
-        <td>{{ summary.year_level_name }}</td>
-        <td>{{ summary.answer.answers }}</td>
-        <td>{{ summary.correct_answer_id }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+    <h2>Summaries</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <th>School</th>
+          <th>Sydney Participant</th>
+          <th>Sydney Percentile</th>
+          <th>Assessment Area</th>
+          <th>Award</th>
+          <th>Class</th>
+          <th>Correct Answer Percentage Per Class</th>
+          <th>Correct Answer</th>
+          <th>Student</th>
+          <th>Participant</th>
+          <th>Student Score</th>
+          <th>Subject</th>
+          <th>Category Id</th>
+          <th>Year Level Name</th>
+          <th>Answer</th>
+          <th>Correct Answer Id</th>
+        </tr>
+        {% for summary in summaries %}
+        <tr>
+          <td>{{ summary.school.name }}</td>
+          <td>{{ summary.sydney_participant }}</td>
+          <td>{{ summary.sydney_percentile }}</td>
+          <td>{{ summary.assessment_area.name }}</td>
+          <td>{{ summary.award.name }}</td>
+          <td>{{ summary.class_id.class_name }}</td>
+          <td>{{ summary.correct_answer_percentage_per_class }}</td>
+          <td>{{ summary.correct_answer }}</td>
+          <td>{{ summary.student.fullname }}</td>
+          <td>{{ summary.participant }}</td>
+          <td>{{ summary.student_score }}</td>
+          <td>{{ summary.subject.subject }} - {{ summary.subject.score }}</td>
+          <td>{{ summary.category_id }}</td>
+          <td>{{ summary.year_level_name }}</td>
+          <td>{{ summary.answer.answers }}</td>
+          <td>{{ summary.correct_answer_id }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
     
     <!-- Pagination for Summaries -->
     <div class="pagination">
