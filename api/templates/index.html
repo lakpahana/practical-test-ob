@@ -25,207 +25,233 @@
         background-color: #f2f2f2;
       }
     </style>
+
+    {% comment %} bootstrap {% endcomment %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
   <body>
-    <h1>Schools</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for school in schools %}
-      <tr>
-        <td>{{ school.name }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <h1>Schools</h1>
+          <table>
+            <tr>
+              <th>Name</th>
+            </tr>
+            {% for school in schools %}
+            <tr>
+              <td>{{ school.name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <div class="pagination">
+            <span class="step-links">
+              {% if schools.has_previous %}
+              <a href="?schools_page=1">« first</a>
+              <a href="?schools_page={{ schools.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                Page {{ schools.number }} of {{ schools.paginator.num_pages }}.
+              </span>
+      
+              {% if schools.has_next %}
+              <a href="?schools_page={{ schools.next_page_number }}">next</a>
+              <a href="?schools_page={{ schools.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <h1>Assessment Areas</h1>
+          <table>
+            <tr>
+              <th>Name</th>
+            </tr>
+            {% for area in assessment_areas %}
+            <tr>
+              <td>{{ area.name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+      
+          <!-- Pagination for Assessment Areas -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if assessment_areas.has_previous %}
+              <a href="?assessment_areas_page=1">« first</a>
+              <a
+                href="?assessment_areas_page={{ assessment_areas.previous_page_number }}"
+                >previous</a
+              >
+              {% endif %}
+      
+              <span class="current">
+                Page {{ assessment_areas.number }} of {{ assessment_areas.paginator.num_pages }}.
+              </span>
+      
+              {% if assessment_areas.has_next %}
+              <a href="?assessment_areas_page={{ assessment_areas.next_page_number }}"
+                >next</a
+              >
+              <a
+                href="?assessment_areas_page={{ assessment_areas.paginator.num_pages }}"
+                >last »</a
+              >
+              {% endif %}
+            </span>
+          </div>
+        </div>
+        <div class="col-4">
+          <h1>Awards</h1>
+          <table>
+            <tr>
+              <th>Name</th>
+            </tr>
+            {% for award in awards %}
+            <tr>
+              <td>{{ award.name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+      
+          <!-- Pagination for Awards -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if awards.has_previous %}
+              <a href="?awards_page=1">« first</a>
+              <a href="?awards_page={{ awards.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                Page {{ awards.number }} of {{ awards.paginator.num_pages }}.
+              </span>
+      
+              {% if awards.has_next %}
+              <a href="?awards_page={{ awards.next_page_number }}">next</a>
+              <a href="?awards_page={{ awards.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
 
-    <!-- Pagination for Schools -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if schools.has_previous %}
-        <a href="?schools_page=1">« first</a>
-        <a href="?schools_page={{ schools.previous_page_number }}">previous</a>
-        {% endif %}
+   
+      <div class="row">
+        <div class="col-4">
+          <h1>Classes</h1>
+          <table>
+            <tr>
+              <th>Name</th>
+            </tr>
+            {% for class in classes %}
+            <tr>
+              <td>{{ class.class_name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+      
+          <!-- Pagination for Classes -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if classes.has_previous %}
+              <a href="?classes_page=1">« first</a>
+              <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
+              </span>
+      
+              {% if classes.has_next %}
+              <a href="?classes_page={{ classes.next_page_number }}">next</a>
+              <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
+         <div>
+         </div>
+          <div class="col-4">
+            <h1>Students</h1>
+            <table>
+              <tr>
+                <th>Name</th>
+              </tr>
+              {% for student in students %}
+              <tr>
+                <td>{{ student.fullname }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+        
+            <!-- Pagination for Students -->
+            <div class="pagination">
+              <span class="step-links">
+                {% if students.has_previous %}
+                <a href="?students_page=1">« first</a>
+                <a href="?students_page={{ students.previous_page_number }}"
+                  >previous</a
+                >
+                {% endif %}
+        
+                <span class="current">
+                  Page {{ students.number }} of {{ students.paginator.num_pages }}.
+                </span>
+        
+                {% if students.has_next %}
+                <a href="?students_page={{ students.next_page_number }}">next</a>
+                <a href="?students_page={{ students.paginator.num_pages }}">last »</a>
+                {% endif %}
+              </span>
+            </div>
+            <div>
+              <div class="col-4">
+                <h1>Subjects</h1>
+                <table>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Score</th>
+                  </tr>
+                  {% for subject in subjects %}
+                  <tr>
+                    <td>{{ subject.subject }}</td>
+                    <td>{{ subject.score }}</td>
+                  </tr>
+                  {% endfor %}
+                </table>
+            
+                <!-- Pagination for Subjects -->
+                <div class="pagination">
+                  <span class="step-links">
+                    {% if subjects.has_previous %}
+                    <a href="?subjects_page=1">« first</a>
+                    <a href="?subjects_page={{ subjects.previous_page_number }}"
+                      >previous</a
+                    >
+                    {% endif %}
+            
+                    <span class="current">
+                      Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
+                    </span>
+            
+                    {% if subjects.has_next %}
+                    <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
+                    <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
+                    {% endif %}
+                  </span>
+                </div>
+                <div>
+                
+        </div>
 
-        <span class="current">
-          Page {{ schools.number }} of {{ schools.paginator.num_pages }}.
-        </span>
 
-        {% if schools.has_next %}
-        <a href="?schools_page={{ schools.next_page_number }}">next</a>
-        <a href="?schools_page={{ schools.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
 
-    <h1>Assessment Areas</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for area in assessment_areas %}
-      <tr>
-        <td>{{ area.name }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+ 
 
-    <!-- Pagination for Assessment Areas -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if assessment_areas.has_previous %}
-        <a href="?assessment_areas_page=1">« first</a>
-        <a
-          href="?assessment_areas_page={{ assessment_areas.previous_page_number }}"
-          >previous</a
-        >
-        {% endif %}
 
-        <span class="current">
-          Page {{ assessment_areas.number }} of {{ assessment_areas.paginator.num_pages }}.
-        </span>
-
-        {% if assessment_areas.has_next %}
-        <a href="?assessment_areas_page={{ assessment_areas.next_page_number }}"
-          >next</a
-        >
-        <a
-          href="?assessment_areas_page={{ assessment_areas.paginator.num_pages }}"
-          >last »</a
-        >
-        {% endif %}
-      </span>
-    </div>
-
-    <h1>Awards</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for award in awards %}
-      <tr>
-        <td>{{ award.name }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-    <!-- Pagination for Awards -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if awards.has_previous %}
-        <a href="?awards_page=1">« first</a>
-        <a href="?awards_page={{ awards.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-          Page {{ awards.number }} of {{ awards.paginator.num_pages }}.
-        </span>
-
-        {% if awards.has_next %}
-        <a href="?awards_page={{ awards.next_page_number }}">next</a>
-        <a href="?awards_page={{ awards.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
-
-    <h1>Classes</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for class in classes %}
-      <tr>
-        <td>{{ class.class_name }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-    <!-- Pagination for Classes -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if classes.has_previous %}
-        <a href="?classes_page=1">« first</a>
-        <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-          Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
-        </span>
-
-        {% if classes.has_next %}
-        <a href="?classes_page={{ classes.next_page_number }}">next</a>
-        <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
-
-    <h1>Students</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-      </tr>
-      {% for student in students %}
-      <tr>
-        <td>{{ student.fullname }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-    <!-- Pagination for Students -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if students.has_previous %}
-        <a href="?students_page=1">« first</a>
-        <a href="?students_page={{ students.previous_page_number }}"
-          >previous</a
-        >
-        {% endif %}
-
-        <span class="current">
-          Page {{ students.number }} of {{ students.paginator.num_pages }}.
-        </span>
-
-        {% if students.has_next %}
-        <a href="?students_page={{ students.next_page_number }}">next</a>
-        <a href="?students_page={{ students.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
-
-    <h1>Subjects</h1>
-    <table>
-      <tr>
-        <th>Subject</th>
-        <th>Score</th>
-      </tr>
-      {% for subject in subjects %}
-      <tr>
-        <td>{{ subject.subject }}</td>
-        <td>{{ subject.score }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-
-    <!-- Pagination for Subjects -->
-    <div class="pagination">
-      <span class="step-links">
-        {% if subjects.has_previous %}
-        <a href="?subjects_page=1">« first</a>
-        <a href="?subjects_page={{ subjects.previous_page_number }}"
-          >previous</a
-        >
-        {% endif %}
-
-        <span class="current">
-          Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
-        </span>
-
-        {% if subjects.has_next %}
-        <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
-        <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
-        {% endif %}
-      </span>
-    </div>
 
     <h1>Answers</h1>
     <table>
@@ -320,5 +346,6 @@
         {% endif %}
       </span>
     </div>
+  </div>
   </body>
 </html>
