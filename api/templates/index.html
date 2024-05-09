@@ -291,26 +291,7 @@
         </div>
       </div>
 
-      <div class="row">
-        <!-- First Column -->
-        <div class="col-md-4">
-
-        </div>
   
-        <!-- Second Column -->
-        <div class="col-md-4">
-    
-        </div>
-  
-        <!-- Third Column -->
-        <div class="col-md-4">
- 
-        </div>
-      </div> 
-
-
-
-   
     
     <div class="row">
 
@@ -321,18 +302,18 @@
           <th>School</th>
           <th>Sydney Participant</th>
           <th>Sydney Percentile</th>
-          <th>Assessment Area</th>
-          <th>Award</th>
-          <th>Class</th>
+          <th>Assessment Area Id</th>
+          <th>Award Id</th>
+          <th>Class Id</th>
           <th>Correct Answer Percentage Per Class</th>
           <th>Correct Answer</th>
-          <th>Student</th>
+          <th>Student Id</th>
           <th>Participant</th>
           <th>Student Score</th>
-          <th>Subject</th>
+          <th>Subject Id</th>
           <th>Category Id</th>
           <th>Year Level Name</th>
-          <th>Answer</th>
+          <th>Answer Id</th>
           <th>Correct Answer Id</th>
         </tr>
         {% for summary in summaries %}
@@ -340,18 +321,18 @@
           <td>{{ summary.school.name }}</td>
           <td>{{ summary.sydney_participant }}</td>
           <td>{{ summary.sydney_percentile }}</td>
-          <td>{{ summary.assessment_area.name }}</td>
-          <td>{{ summary.award.name }}</td>
-          <td>{{ summary.class_id.class_name }}</td>
+          <td>{{ summary.assessment_area.id }}</td>
+          <td>{{ summary.award.id }}</td>
+          <td>{{ summary.class_id.id }}</td>
           <td>{{ summary.correct_answer_percentage_per_class }}</td>
           <td>{{ summary.correct_answer }}</td>
-          <td>{{ summary.student.fullname }}</td>
+          <td>{{ summary.student.id }}</td>
           <td>{{ summary.participant }}</td>
           <td>{{ summary.student_score }}</td>
-          <td>{{ summary.subject.subject }} - {{ summary.subject.score }}</td>
+          <td>{{ summary.subject.id }}</td>
           <td>{{ summary.category_id }}</td>
           <td>{{ summary.year_level_name }}</td>
-          <td>{{ summary.answer.answers }}</td>
+          <td>{{ summary.answer.id }}</td>
           <td>{{ summary.correct_answer_id }}</td>
         </tr>
         {% endfor %}
