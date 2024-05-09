@@ -57,10 +57,12 @@
           <h2>Schools</h2>
           <table class="table table-bordered">
             <tr>
+              <th>Id</th>
               <th>Name</th>
             </tr>
             {% for school in schools %}
             <tr>
+              <td>{{ school.id }}</td>
               <td>{{ school.name }}</td>
             </tr>
             {% endfor %}
@@ -82,15 +84,48 @@
               {% endif %}
             </span>
           </div>
+          <br>
+          <h2>Classes</h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+            </tr>
+            <!-- Classes Table Content -->
+            {% for class in classes %}
+            <tr>
+              <td>{{ class.id }}</td>
+              <td>{{ class.class_name }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <!-- Pagination for Classes -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if classes.has_previous %}
+              <a href="?classes_page=1">« first</a>
+              <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
+              </span>
+              {% if classes.has_next %}
+              <a href="?classes_page={{ classes.next_page_number }}">next</a>
+              <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
         </div>
         <div class="col-4">
           <h2>Assessment Areas</h2>
           <table class="table table-bordered">
             <tr>
+              <th>Id</th>
               <th>Name</th>
             </tr>
             {% for area in assessment_areas %}
             <tr>
+              <td>{{ area.id }}</td>
               <td>{{ area.name }}</td>
             </tr>
             {% endfor %}
@@ -122,15 +157,48 @@
               {% endif %}
             </span>
           </div>
+          <br>
+          <h2>Answers</h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+            </tr>
+            <!-- Classes Table Content -->
+            {% for answer in answers %}
+            <tr>
+              <td>{{ answer.id }}</td>
+              <td>{{ answer.answers }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <!-- Pagination for Classes -->
+          <div class="pagination">
+            <span class="step-links">
+              {% if answers.has_previous %}
+              <a href="?classes_page=1">« first</a>
+              <a href="?classes_page={{ answers.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="current">
+                Page {{ answers.number }} of {{ answers.paginator.num_pages }}.
+              </span>
+              {% if answers.has_next %}
+              <a href="?classes_page={{ answers.next_page_number }}">next</a>
+              <a href="?classes_page={{ answers.paginator.num_pages }}">last »</a>
+              {% endif %}
+            </span>
+          </div>
         </div>
         <div class="col-4">
           <h2>Awards</h2>
           <table class="table table-bordered">
             <tr>
+              <th>Id</th>
               <th>Name</th>
             </tr>
             {% for award in awards %}
             <tr>
+              <td>{{ award.id }}</td>
               <td>{{ award.name }}</td>
             </tr>
             {% endfor %}
@@ -154,52 +222,51 @@
               {% endif %}
             </span>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <!-- First Column -->
-        <div class="col-md-4">
-          <h2>Classes</h2>
+          <br>
+          <h2>Subjects</h2>
           <table class="table table-bordered">
             <tr>
-              <th>Name</th>
+              <th>Id</th>
+              <th>Subject</th>
+              <th>Score</th>
             </tr>
-            <!-- Classes Table Content -->
-            {% for class in classes %}
+            <!-- Subjects Table Content -->
+            {% for subject in subjects %}
             <tr>
-              <td>{{ class.class_name }}</td>
+              <td>{{ subject.id }}</td>
+              <td>{{ subject.subject }}</td>
+              <td>{{ subject.subject_score }}</td>
             </tr>
             {% endfor %}
           </table>
-          <!-- Pagination for Classes -->
+          <!-- Pagination for Subjects -->
           <div class="pagination">
             <span class="step-links">
-              {% if classes.has_previous %}
-              <a href="?classes_page=1">« first</a>
-              <a href="?classes_page={{ classes.previous_page_number }}">previous</a>
+              {% if subjects.has_previous %}
+              <a href="?subjects_page=1">« first</a>
+              <a href="?subjects_page={{ subjects.previous_page_number }}">previous</a>
               {% endif %}
               <span class="current">
-                Page {{ classes.number }} of {{ classes.paginator.num_pages }}.
+                Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
               </span>
-              {% if classes.has_next %}
-              <a href="?classes_page={{ classes.next_page_number }}">next</a>
-              <a href="?classes_page={{ classes.paginator.num_pages }}">last »</a>
+              {% if subjects.has_next %}
+              <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
+              <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
               {% endif %}
             </span>
           </div>
-        </div>
-  
-        <!-- Second Column -->
-        <div class="col-md-4">
+          <br>
           <h2>Students</h2>
           <table class="table table-bordered">
             <tr>
+              <th>Id</th>
               <th>Name</th>
             </tr>
             <!-- Students Table Content -->
             {% for student in students %}
             <tr>
+              <td>{{ student.id }}</td>
+
               <td>{{ student.fullname }}</td>
             </tr>
             {% endfor %}
@@ -220,40 +287,24 @@
               {% endif %}
             </span>
           </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- First Column -->
+        <div class="col-md-4">
+
+        </div>
+  
+        <!-- Second Column -->
+        <div class="col-md-4">
+    
         </div>
   
         <!-- Third Column -->
         <div class="col-md-4">
-          <h2>Subjects</h2>
-          <table class="table table-bordered">
-            <tr>
-              <th>Subject</th>
-              <th>Score</th>
-            </tr>
-            <!-- Subjects Table Content -->
-            {% for subject in subjects %}
-            <tr>
-              <td>{{ subject.subject }}</td>
-              <td>{{ subject.score }}</td>
-            </tr>
-            {% endfor %}
-          </table>
-          <!-- Pagination for Subjects -->
-          <div class="pagination">
-            <span class="step-links">
-              {% if subjects.has_previous %}
-              <a href="?subjects_page=1">« first</a>
-              <a href="?subjects_page={{ subjects.previous_page_number }}">previous</a>
-              {% endif %}
-              <span class="current">
-                Page {{ subjects.number }} of {{ subjects.paginator.num_pages }}.
-              </span>
-              {% if subjects.has_next %}
-              <a href="?subjects_page={{ subjects.next_page_number }}">next</a>
-              <a href="?subjects_page={{ subjects.paginator.num_pages }}">last »</a>
-              {% endif %}
-            </span>
-          </div>
+ 
         </div>
       </div> 
 
